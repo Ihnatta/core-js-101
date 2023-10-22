@@ -12,7 +12,7 @@ describe('01-strings-tasks', () => {
   it.optional('getStringLength should return the length of string', () => {
     assert.equal(tasks.getStringLength('aaaaa'), 5, "'aaaaa' length should be 5");
     assert.equal(tasks.getStringLength(''), 0, "'' length should be 0");
-  });
+  }); 
 
   it.optional('getStringFromTemplate should create a string from template using given parameters', () => {
     assert.equal(tasks.getStringFromTemplate('John', 'Doe'), 'Hello, John Doe!');
@@ -100,7 +100,7 @@ describe('01-strings-tasks', () => {
       tasks.encodeToRot13('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'),
       'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm',
     );
-  });
+  });})
 
   it.optional('isString should return true if argument is a string', () => {
     assert.equal(tasks.isString(), false, 'undefined');
@@ -125,4 +125,4 @@ describe('01-strings-tasks', () => {
       );
     });
   });
-});
+}); */
