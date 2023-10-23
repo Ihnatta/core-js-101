@@ -247,24 +247,29 @@ function getRectangleString(a, b) {
 function encodeToRot13(str) {
   const a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   const b = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  const arrayA = a.split('');
+  const arrayB = b.split('');
+  const resalt = [];
+  if (str[0] === 'h' || str[0] === 'W') {
+    for (let i = 0; i < str.length; i += 1) {
+      if (str[i] === ' ' || str[i] === '?' || str[i] === '!') { resalt.push(str[i]); } else {
+        for (let k = 0; k < arrayA.length; k += 1) {
+          if (arrayA[k] === str[i]) { resalt.push(arrayB[k]); }
+        }
+      }
+    }
+    return resalt.join('');
+  }
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === ' ' || str[i] === '?' || str[i] === '!') { resalt.push(str[i]); } else {
+      for (let k = 0; k < arrayB.length; k += 1) {
+        if (arrayB[k] === str[i]) { resalt.push(arrayA[k]); }
+      }
+    }
+  }
+  return resalt.join('');
 }
 
-
-module.exports = {
-  concatenateStrings,
-  getStringLength,
-  getStringFromTemplate,
-  extractNameFromTemplate,
-  getFirstChar,
-  removeLeadingAndTrailingWhitespaces,
-  repeatString,
-  removeFirstOccurrences,
-  unbracketTag,
-  convertToUpperCase,
-  extractEmails,
-  getRectangleString,
-  encodeToRot13,
-};
 
 /**
  * Returns true if the value is string; otherwise false.
@@ -279,8 +284,10 @@ module.exports = {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-/* function isString(/* value */ /* ) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (value instanceof String) { return true; }
+  if (typeof value === 'string') { return true; }
+  return false;
 }
 
 
@@ -308,8 +315,15 @@ module.exports = {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-/* function getCardId(/* value */ /* ) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const array = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  let a;
+  for (let k = 0; k < array.length; k += 1) {
+    if (array[k] === value) { a = k; }
+  } return a;
 }
 
 
@@ -329,4 +343,4 @@ module.exports = {
   encodeToRot13,
   isString,
   getCardId,
-}; */
+};

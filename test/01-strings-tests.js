@@ -100,7 +100,7 @@ describe('01-strings-tasks', () => {
       tasks.encodeToRot13('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'),
       'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm',
     );
-  });})
+  });
 
   it.optional('isString should return true if argument is a string', () => {
     assert.equal(tasks.isString(), false, 'undefined');
@@ -125,4 +125,4 @@ describe('01-strings-tasks', () => {
       );
     });
   });
-}); */
+}); 
